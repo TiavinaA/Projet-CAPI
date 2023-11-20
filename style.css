@@ -35,6 +35,11 @@ button {
     position: relative;
     text-align: center;
 }
-
-
-
+.labelChamp{
+    background: linear-gradient(180deg, #F9C58D 0%, #F492F0 100%);
+    font-family: Righteous;
+    margin: 5%;
+}
+.champ{
+    border-radius: 10px;
+}
