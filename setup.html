@@ -16,16 +16,18 @@
     <div class="menu">    
       
       <h1 class="titre">Paramètres</h1>
+        <label class="labelChamp" for="mode"> Mode de jeu </label>
         <select name="mode">
           <option value="Unanimité">Unanimité</option>
           <option value="Majorité">Majorité</option>
         </select>
-        <label for="joueurs">Nombre de joueurs</label>
-        <input type="number" id="joueurs" name="joueurs" min="2">
-        <label for="tVote">Durée du vote</label>
-        <input type="number" id="tVote" name="tVote" min="20">
-        <label for="tDebat">Durée des débats</label>
-        <input type="number" id="tDebat" name="tDebat" min="20">
+        <label class="labelChamp" for="joueurs">Nombre de joueurs</label>
+        <input type="number" class="champ" id="joueurs" name="joueurs" min="2">
+        <label class="labelChamp" for="tVote">Durée du vote</label>
+        <input type="number" class="champ" id="tVote" name="tVote" min="20">
+        <label class="labelChamp" for="tDebat">Durée des débats</label>
+        <input type="number" class="champ" id="tDebat" name="tDebat" min="20">
+        <br>
         <button class="button">Valider</button>
 
     </div>
