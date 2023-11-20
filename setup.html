@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Planning Poker</title>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
     
-</body>
+  </head>
+
+  <body>
+
+    <div class="menu">    
+      
+      <h1 class="titre">Paramètres</h1>
+        <select name="mode">
+          <option value="Unanimité">Unanimité</option>
+          <option value="Majorité">Majorité</option>
+        </select>
+        <label for="joueurs">Nombre de joueurs</label>
+        <input type="number" id="joueurs" name="joueurs" min="2">
+        <label for="tVote">Durée du vote</label>
+        <input type="number" id="tVote" name="tVote" min="20">
+        <label for="tDebat">Durée des débats</label>
+        <input type="number" id="tDebat" name="tDebat" min="20">
+        <button class="button">Valider</button>
+
+    </div>
+
+  </body>
 </html>
