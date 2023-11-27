@@ -1,5 +1,0 @@
-onload = fInit;
-
-function fInit(){
-
-}
