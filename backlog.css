@@ -1,0 +1,21 @@
+.newEntryForm{
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+    padding: 10%;
+    background-color: #61bde8;
+}
+.newEntryField{
+    resize: none;
+}
+.task{
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    padding: 10%;
+    background-color: #2091c5;
+}
+.entryBlock{
+    float: right;
+}

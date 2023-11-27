@@ -6,17 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Planning Poker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="backlog.css">
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
-    
+    <script src="main.js"></script>
   </head>
 
   <body>
+    <div id="entryBlock">
+      <h1>Backlog</h1>
+      <div id="entryList">
 
-    <div class="newEntrySquare">    
-        <label for="newEntryField">Nouvelle tache</label>
-        <textarea rows="4" cols="40" name="newEntryField" id="newEntryField" class="newEntryField"></textarea>
+      </div>
+
+      <form class="newEntryForm" id="EntryForm1">    
+          <label for="newEntryField">Nouvelle tache</label>
+          <br>
+          <textarea rows="4" cols="40" maxlength=256 name="newEntryField" id="newEntryField" class="newEntryField"></textarea>
+          <br>
+          <input type="submit" value="Ajouter">
+          <input type="button" value="Valider" onclick="finishEntryList()">
+      </form>
     </div>
-
   </body>
 </html>
