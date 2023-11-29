@@ -38,6 +38,7 @@ function ajouterPseudo() {
 
         // Incrémente le compteur de joueurs
         playerCount++;
+        afficherBouton();
     } else {
         alert("Veuillez entrer un pseudo valide.");
     }
@@ -48,4 +49,15 @@ function supprimerPseudo(playerEntry) {
     var pseudosList = document.getElementById("pseudos-list");
     pseudosList.removeChild(playerEntry);
     playerCount--;
+    afficherBouton();
+}
+
+// Si il n'y a pas de joueur isncrit, on ne peut pas continuer
+function afficherBouton(){
+    var nextButton = document.getElementById("nextButton");
+    if (playerCount > 0){
+        nextButton.style.display = "block";
+    } else {
+        nextButton.style.display = "none";
+    }
 }

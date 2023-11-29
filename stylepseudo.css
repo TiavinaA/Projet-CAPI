@@ -1,4 +1,4 @@
-html {
+/* html {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,4 +41,48 @@ html {
 #pseudos-list{
     border-radius: 30px;
     border : 2px solid;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    background: #6665ee;
+}
+#pseudos-list{
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+}
+#pseudos-list header {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.ligneJoueur{
+    display: flex;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin-right: 10px;
+    position: relative;
+    height: 50px;
+}
+#pseudo{
+    width: 70%;
+    height: 40px; 
+    border-radius: 15px;
 }
