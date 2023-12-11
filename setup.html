@@ -8,12 +8,13 @@
     <title>Planning Poker</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet'>
+    <script src="setup.js"></script>
     
   </head>
 
   <body>
 
-    <div class="menu">    
+    <div class="menu" id="menu">    
       
       <h1 class="titre">Paramètres</h1>
         <label class="labelChamp" for="mode"> Mode de jeu </label>
@@ -21,8 +22,6 @@
           <option value="Unanimité">Unanimité</option>
           <option value="Majorité">Majorité</option>
         </select>
-        <label class="labelChamp" for="joueurs">Nombre de joueurs</label>
-        <input type="number" class="champ" id="joueurs" name="joueurs" min="2">
         <label class="labelChamp" for="tVote">Durée du vote</label>
         <input type="number" class="champ" id="tVote" name="tVote" min="20">
         <label class="labelChamp" for="tDebat">Durée des débats</label>
