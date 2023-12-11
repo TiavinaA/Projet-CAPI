@@ -1,5 +1,5 @@
 
-var maxPlayers = 4;
+var maxPlayers = 10;
 var playerCount = 0;
 function ajouterPseudo() {
     if (playerCount >= maxPlayers) {
