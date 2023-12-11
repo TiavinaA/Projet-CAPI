@@ -1,0 +1,88 @@
+/* html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;  
+}
+#titre{
+    font-family: Righteous;
+    flex-shrink: 0;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background-image: radial-gradient(50% 50% at 50% 50%, #F9C58D 0%, #F492F0 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    font-size: 1em;
+}
+#pseudo {
+
+    border-radius: 30px;
+    border-image: linear-gradient(180deg, #F9C58D 0%, #F492F0 100%);
+    flex-shrink: 0;
+    font-family: Righteous;
+    width: 50%;
+    height: 50px; 
+    font-size: 3em;
+    border: 2px solid;
+    border-image-slice: 1;
+    padding: 10px;
+}
+#submitbutton{
+    border-radius: 100px;
+    background: linear-gradient(180deg, #F9C58D 0%, #F492F0 100%);
+    flex-shrink: 0;
+    font-family: Righteous;
+    width: 30%;
+    height: 50px; 
+    font-size: 1em;
+}
+#pseudos-list{
+    border-radius: 30px;
+    border : 2px solid;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    background: #6665ee;
+}
+#pseudos-list{
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+}
+#pseudos-list header {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.ligneJoueur{
+    display: flex;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin-right: 10px;
+    position: relative;
+    height: 50px;
+}
+#pseudo{
+    width: 70%;
+    height: 40px; 
+    border-radius: 15px;
+}
