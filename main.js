@@ -11,21 +11,23 @@ function initForm(){
         event.preventDefault();
         //On crée un paragraphe qui contient la tache
         var task = form['newEntryField'].value;
-        var taskContainer = document.getElementById("entryList");
-        
-        var taskElement = document.createElement("p");
-        taskElement.classList.add("task");
-        taskElement.innerHTML = task;
-        var taskModifButton = document.createElement("input");
-        taskModifButton.type = "button";
-        taskModifButton.value = "modifier";
-        taskModifButton.onclick = "modifTask()";
-        taskModifButton.classList.add("taskModifButton");
-        
-        taskElement.appendChild(taskModifButton);
-        taskContainer.appendChild(taskElement);
+        if (task != "") {
+            var taskContainer = document.getElementById("entryList");
+            
+            var taskElement = document.createElement("p");
+            taskElement.classList.add("task");
+            taskElement.innerHTML = task;
+            var taskModifButton = document.createElement("input");
+            taskModifButton.type = "button";
+            taskModifButton.value = "modifier";
+            taskModifButton.onclick = "modifTask()";
+            taskModifButton.classList.add("taskModifButton");
+            
+            taskElement.appendChild(taskModifButton);
+            taskContainer.appendChild(taskElement);
 
-        form.reset();
+            form.reset();
+        }
     })
 }
 
