@@ -61,3 +61,12 @@ function afficherBouton(){
         nextButton.style.display = "none";
     }
 }
+// Fonction pour sauvegarder les pseudos dans localStorage
+function sauvegarderPseudos() {
+    var pseudosList = document.getElementById("pseudos-list");
+    var pseudos = Array.from(pseudosList.children).map(function(playerEntry) {
+        return playerEntry.firstChild.textContent;
+    });
+
+    localStorage.setItem('pseudos', JSON.stringify(pseudos));
+}
