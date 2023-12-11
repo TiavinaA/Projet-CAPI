@@ -1,29 +1,10 @@
 onload = fInit;
 
 InitForm(){
-    const form = document.getElementById("menu")
+    const form = document.getElementById("setupForm")
     form.addEventListener("submit", (event) => {
         //On empeche de submit
         event.preventDefault();
-        //On crée un paragraphe qui contient la tache
-        var task = form['newEntryField'].value;
-        if (task != "") {
-            var taskContainer = document.getElementById("entryList");
-            
-            var taskElement = document.createElement("p");
-            taskElement.classList.add("task");
-            taskElement.innerHTML = task;
-            var taskModifButton = document.createElement("input");
-            taskModifButton.type = "button";
-            taskModifButton.value = "modifier";
-            taskModifButton.onclick = "modifTask()";
-            taskModifButton.classList.add("taskModifButton");
-            
-            taskElement.appendChild(taskModifButton);
-            taskContainer.appendChild(taskElement);
-
-            form.reset();
-        }
     })
 }
 
