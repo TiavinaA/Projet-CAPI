@@ -1,9 +1,6 @@
 onload = fInit;
 
-/*var $setter = $("#setter");
-$setter.siblings(".wrap").css("max-width", $setter.width()+"px");
- */
-
+/* */
 function initForm(){
     const form = document.getElementById("EntryForm1")
     form.addEventListener("submit", (event) => {
@@ -19,8 +16,8 @@ function initForm(){
             taskElement.innerHTML = task;
             var taskModifButton = document.createElement("input");
             taskModifButton.type = "button";
-            taskModifButton.value = "modifier";
-            taskModifButton.onclick = "modifTask()";
+            taskModifButton.value = "supprimer";
+            taskModifButton.addEventListener("click", supprTask);
             taskModifButton.classList.add("taskModifButton");
             
             taskElement.appendChild(taskModifButton);
@@ -29,6 +26,10 @@ function initForm(){
             form.reset();
         }
     })
+}
+
+function supprTask(event){
+    this.parentNode.parentNode.removeChild(this.parentNode);
 }
 
 function finishEntryList(){
