@@ -26,6 +26,7 @@ function initForm(){
             form.reset();
         }
     })
+    document.getElementById("EntryValidation").addEventListener("click", finishEntryList);
 }
 
 function supprTask(event){
@@ -33,6 +34,12 @@ function supprTask(event){
 }
 
 function finishEntryList(){
+    const entryListElement = document.getElementById("entryList");
+    var taskArray = Array();
+    entryListElement.childNodes.forEach((task) => {
+        taskArray.push(task.firstChild.innerHTML);
+    })
+    localStorage.setItem("tasks", JSON.stringify(taskArray));
 }
 
 
