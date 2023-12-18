@@ -37,12 +37,14 @@ function finishEntryList(){
     const entryListElement = document.getElementById("entryList");
     var taskArray = Array();
     entryListElement.childNodes.forEach((task) => {
-        taskArray.push(task.firstChild.innerHTML);
+        let str = String(task.innerHTML);
+        taskArray.push(str.replace("<input type=\"button\" value=\"supprimer\" class=\"taskModifButton\">", ""));
     })
     localStorage.setItem("tasks", JSON.stringify(taskArray));
 }
 
 
 function fInit(){
+    console.log(localStorage.getItem("tasks"));
     initForm();
 }
