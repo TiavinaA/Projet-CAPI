@@ -1,0 +1,49 @@
+/* stylejeu.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* stylejeu.css */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    background: #6665ee;
+
+}
+
+.titre {
+    margin-top: 20px; /* Ajustez la marge supérieure selon vos besoins */
+}
+
+#cardList {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+}
+
+#cardList img {
+    width: 50px;
+    height: 80px;
+    margin: 5px;
+}
+
+#cardList img.highlighted {
+    background-color: #ccc; /* Changez la couleur de fond en jaune (ou une autre couleur de votre choix) */
+    border: 2px solid white; /* Ajoutez une bordure orange (ou une autre couleur de votre choix) */
+}
