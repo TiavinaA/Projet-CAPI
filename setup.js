@@ -1,18 +1,25 @@
 onload = fInit;
 
-function InitForm(){
+function InitForm() {
     const form = document.getElementById("setupForm")
     form.addEventListener("submit", (event) => {
-        //On empeche de submit
+        // On empêche la soumission par défaut du formulaire
         event.preventDefault();
-        var settings = Array();
-        settings.push(form["mode"])
-        settings.push(form["tVote"])
-        settings.push(form["tDebat"])
-        localStorage.setItem("settings", JSON.stringify(settings))
-    })
+
+        // Récupérer les valeurs du formulaire
+        var mode = form["mode"].value;
+        var tVote = form["tVote"].value;
+        var tDebat = form["tDebat"].value;
+
+        // Stocker les valeurs dans localStorage
+        var settings = { mode: mode, tVote: tVote, tDebat: tDebat };
+        localStorage.setItem("settings", JSON.stringify(settings));
+
+        // Rediriger vers pseudo.html
+        window.location.href = "pseudo.html";
+    });
 }
 
-function fInit(){
+function fInit() {
     InitForm();
 }
