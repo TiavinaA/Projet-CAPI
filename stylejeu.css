@@ -47,3 +47,20 @@ body {
     background-color: #ccc; /* Changez la couleur de fond en jaune (ou une autre couleur de votre choix) */
     border: 2px solid white; /* Ajoutez une bordure orange (ou une autre couleur de votre choix) */
 }
+div#playerList {
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+div.player {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+body {
+    margin: 0 auto;
+}
