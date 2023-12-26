@@ -15,6 +15,7 @@ function ajouterPseudo() {
         var ligneJoueur = document.createElement("div");
         ligneJoueur.className = "ligneJoueur";
         var pseudoElement = document.createElement("p");
+        pseudoElement.className = "pseudo-text";
         pseudoElement.textContent = pseudo;
         ligneJoueur.appendChild(pseudoElement);
 
