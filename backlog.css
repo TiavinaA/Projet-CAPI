@@ -1,22 +1,87 @@
-.newEntryForm{
-    border-radius: 10px;
-    align-items: center;
-    text-align: center;
-    padding: 10%;
-    background-color: #61bde8;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-.newEntryField{
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    background: #6665ee;
+}
+
+#entryBlock {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    font-family: 'Righteous', cursive;
+    color: #333;
+}
+
+.task-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.newEntryForm {
+    border: 2px solid #ccc;
+    border-radius: 15px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+.newEntryField {
+    width: 70%;
+    height: 100px;
+    border-radius: 15px;
+    margin-top: 5px;
     resize: none;
 }
-.task{
-    border-radius: 10px;
-    align-items: center;
-    position: relative;
-    text-align: center;
-    padding: 10%;
-    background-color: #2091c5;
+
+#fileInput {
+    margin-top: 10px;
 }
-.entryBlock{
-    float: right;
+
+#loadJsonButton {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 8px 16px;
+}
+
+input[type="submit"],
+input[type="button"] {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.task {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 380px;
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Ajustez la marge entre les tâches selon vos préférences */
+}
+#entryList {
+    display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
 }
