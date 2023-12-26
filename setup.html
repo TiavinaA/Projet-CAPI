@@ -14,11 +14,11 @@
 
   <body>
 
-    <form class="menu" id="setupForm">    
+    <form class="menu" id="setupForm" action="pseudo.html" method="GET">    
       
       <h1 class="titre">Paramètres</h1>
         <label class="labelChamp" for="mode"> Mode de jeu </label>
-        <select name="mode">
+        <select id='mode' name="mode">
           <option value="Unanimité">Unanimité</option>
           <option value="Majorité">Majorité</option>
         </select>
@@ -27,7 +27,7 @@
         <label class="labelChamp" for="tDebat">Durée des débats</label>
         <input type="number" class="champ" id="tDebat" name="tDebat" min="20">
         <br>
-        <a href="pseudo.html"><button class="button">Valider</button></a>
+        <button type="submit" class="button">Valider</button>
 
     </form>
 
