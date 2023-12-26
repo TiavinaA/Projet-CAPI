@@ -1,7 +1,10 @@
 /*Gestion de la logique du planning poker*/
 onload = fInit;
-var currentCardId = "none";
+var currentCardId = "none"; // Carte actuellement sélectionnée par le joueur
 
+/**
+ * Crée un eventListener dans la liste de carte qui modifie le currentCardID
+ */
 function fInitCard(){
     document.getElementById("cardList").addEventListener("click", (event) => { // On highlight la nouvelle carte et on la garde en mémoire
         if(currentCardId != "none") document.getElementById(currentCardId).classList.remove("highlighted")
@@ -10,6 +13,10 @@ function fInitCard(){
     })
 }
 
+/**
+ * Cette fonction permet de créer dynamiquement un cercle ou sont positionnés les joueurs
+ * l'item pseudos doit être déjà créé (ce qui ce fait sur la page pseudos)
+ */
 function fInitPLayers(){
     var theta = [];
     var players = localStorage.getItem("pseudos");  // Stringified array
@@ -52,5 +59,5 @@ function fInitPLayers(){
 
 function fInit(){
     fInitPLayers();
-    //fInitCard();
+    fInitCard();
 }

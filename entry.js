@@ -44,6 +44,9 @@ function finishEntryList(){
     })
     // On utilise localstorage afin de rester vanilla en ayant toujours plusieurs pages
     localStorage.setItem("tasks", JSON.stringify(taskArray));
+
+    //Redirige vers la page de jeu
+    window.location.href = "jeu.html"
 }
 
 function loadJson() {
@@ -89,7 +92,6 @@ function displayTasksFromJson(tasks) {
 }
 
 function fInit() {
-    console.log(localStorage.getItem("tasks"));
     initForm();
 }
 
