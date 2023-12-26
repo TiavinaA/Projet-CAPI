@@ -24,6 +24,7 @@ function initForm() {
             form.reset();
         }
     })
+    // Event listener pour sauver les tasks et passer au jeu
 
     document.getElementById("EntryValidation").addEventListener("click", finishEntryList);
     document.getElementById("loadJsonButton").addEventListener("click", loadJson);
@@ -33,13 +34,15 @@ function supprTask(event) {
     this.parentNode.parentNode.removeChild(this.parentNode);
 }
 
-function finishEntryList() {
+/* Prend la liste de nodes tasks et crée un array plus facile à utiliser pour le jeu*/
+function finishEntryList(){
     const entryListElement = document.getElementById("entryList");
     var taskArray = Array();
     entryListElement.childNodes.forEach((task) => {
         let str = String(task.innerHTML);
         taskArray.push(str.replace("<input type=\"button\" value=\"supprimer\" class=\"taskModifButton\">", ""));
     })
+    // On utilise localstorage afin de rester vanilla en ayant toujours plusieurs pages
     localStorage.setItem("tasks", JSON.stringify(taskArray));
 }
 

@@ -1,3 +1,4 @@
+/*Gestion de la sauvegarde des paramètre en local*/
 onload = fInit;
 
 function InitForm() {
