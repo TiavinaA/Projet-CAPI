@@ -3,6 +3,7 @@ onload = fInit;
 var currentCardId = "none"; // Carte actuellement sélectionnée par le joueur
 var currentTaskIndex = 0;   // Tache a voter
 var currentPlayerIndex = 0; // Joueur actuel
+var settings = [];          // Dictionaire des paramètres sous ce format [mode: "mode", tVote: "nombre", tDebat: "nombre"]
 var tasks = [];             // Liste des tâches
 var selectedcard = [];      // Cartes choisises pendant le tour en cours
 var results = [];           // Contient les difficultés trouvées pour chaque tâches
@@ -83,6 +84,7 @@ function afficherBoutonTourSuivant() {
             reinitialiserSelectionCarte();
             if (selectedcard.length == players.length){
                 alert('Tout les joueurs ont votés');
+                passerTacheSuivante();
                 return;
             }
         });
@@ -120,8 +122,66 @@ function afficherCurrentPlayer() {
  * Gère le passage aux prochaines tâches
  * si le vote est ok on passe, sinon on gère la phase de négociation
  */
-//function passerTacheSuivante() {
-//}
+function passerTacheSuivante() {
+    if (tasks && tasks.length > 0) {
+        if (currentTaskIndex >= tasks.length){ // On gère la fin du jeu
+            terminerJeu();
+            console.log("Terminer jeu");
+        }else{
+            if(currentTaskIndex > 0){ // Si on est pas sur le premier tours on gère la fin du tour
+                if(settings["mode"] == "Unanimité"){
+                    // On passe en mode débat dès que 
+                    if(!selectedcard.every(val => val === selectedcard[0])){
+                        reinitialiserSelectionCarte();
+                        demarrerDebat();
+                    }else{
+                        if(selectedcard[0] == 102) { // Tout le monde demande une pause café
+                            reinitialiserSelectionCarte();
+                            alert("Vous avez choisis de faire une pause");
+                        }else{
+                            results.push(selectedcard[0]); // On ajoute et on passe le tour
+                            // On change la task en cours;
+                            var currentTaskElement = document.getElementById("currentTask");
+                            if (currentTaskElement){
+                                currentTaskElement.innerHTML = tasks[currentTaskIndex];
+                                currentTaskIndex += 1;
+                            }
+                        }
+                    }
+                }else if(settings["mode"] == "Majorité"){ // On teste si il y a une majorité
+                    var count = {1 : 0, 2 : 0, 3 : 0, 5 : 0, 8 : 0, 13 : 0, 20 : 0, 40 : 0, 100 : 0, 101 : 0, 102 : 0}; 
+                    var winner = -1;
+                    selectedcard.forEach( (card) => {
+                        count[card] += 1;
+                    })
+                    for(let key in count){
+                        if(count[key] >= selectedcard.length / 2 + 1 && key != 101 && key != 102)
+                            winner = key;
+                    }
+                    if(winner == -1){ // Si il n'y a pas de majorité
+                        reinitialiserSelectionCarte();
+                        demarrerDebat();
+                    }else{
+                        results.push(winner);
+                        // On change la task en cours;
+                    var currentTaskElement = document.getElementById("currentTask");
+                    if (currentTaskElement){
+                        currentTaskElement.innerHTML = tasks[currentTaskIndex];
+                        currentTaskIndex += 1;
+                    }
+                    }
+                }
+            }else{ // Sinon on passe juste au premier tour
+                // On change la task en cours;
+                var currentTaskElement = document.getElementById("currentTask");
+                if (currentTaskElement){
+                    currentTaskElement.innerHTML = tasks[currentTaskIndex];
+                    currentTaskIndex += 1;
+                }
+            }
+        }
+    }
+}
 
 /**
  * Fonction pour réinitialiser la sélection de carte
@@ -140,17 +200,22 @@ function reinitialiserSelectionCarte() {
     }
 }
 
+function demarrerDebat(){
+    alert("Débat");
+}
 
 function ValeurCarte(){
-    var valeur = parseInt(currentCardId);
-    return valeur;
+    if(currentCardId == "cint") return 101;
+    if(currentCardId == "ccafe") return 102;
+    return parseInt(currentCardId);;
 }
 
 function fInit() {
     fInitPLayers();
     fInitCard();
-    tasks = 
-    console.log(players);
+    tasks = JSON.parse(localStorage.getItem("tasks")).slice(1);
+    settings = JSON.parse(localStorage.getItem("settings"));
+    console.log(settings);
 
     // Assurez-vous que currentPlayerIndex est initialisé à 0
     currentPlayerIndex = 0;
@@ -163,6 +228,7 @@ function fInit() {
     demarrerButton.addEventListener("click", function () {
         // Appel à passerAuJoueurSuivant() pour passer au premier joueur
         passerAuJoueurSuivant();
+        passerTacheSuivante(); // On démarre la première tâche
         demarrerButton.remove();
     });
 
