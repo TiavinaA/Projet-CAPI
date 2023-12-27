@@ -1,6 +1,9 @@
 /*Gestion de la logique du planning poker*/
 onload = fInit;
 var currentCardId = "none"; // Carte actuellement sélectionnée par le joueur
+var currentTask = "none" //Tache a voter
+var currentPlayerIndex = 0//Joueur actuel
+var selectedcard = [];
 
 /**
  * Crée un eventListener dans la liste de carte qui modifie le currentCardID
@@ -10,7 +13,11 @@ function fInitCard(){
         if(currentCardId != "none") document.getElementById(currentCardId).classList.remove("highlighted")
         currentCardId = event.target.id;
         document.getElementById(currentCardId).classList.add("highlighted");
-    })
+        console.log(currentCardId);
+        afficherBoutonTourSuivant();
+        
+    });
+    
 }
 
 /**
@@ -19,8 +26,8 @@ function fInitCard(){
  */
 function fInitPLayers(){
     var theta = [];
-    var players = localStorage.getItem("pseudos");  // Stringified array
-    players = JSON.parse(players).slice(1);         // Parsed array with title removed
+    players = localStorage.getItem("pseudos");  // Stringified array
+    players = JSON.parse(players).slice(1);// Parsed array with title removed
 
     var setup = function (n, rx, ry, id) {
         var main = document.getElementById(id);
@@ -54,10 +61,102 @@ function fInitPLayers(){
         setup(n, rx, ry, id)
     }
     generate(players.length, 150, 75, 'playerList');
-    console.log(players.length);
+}
+/**
+ * Cette fonction permet d'afficher le bouton "Tour Suivant" lorsque la carte est sélectionnée.
+ */
+function afficherBoutonTourSuivant() {
+    // Vérifiez si une carte est sélectionnée
+    if (currentCardId !== "none") {
+        // Créez le bouton "Tour Suivant"
+        var boutonTourSuivant = document.createElement("button");
+        boutonTourSuivant.innerText = "Tour Suivant";
+        boutonTourSuivant.id = "tourSuivantButton";
+
+        // Ajoutez un gestionnaire d'événements pour le clic sur le bouton
+        boutonTourSuivant.addEventListener("click", function () {
+            passerAuJoueurSuivant();
+            var valeurCarte = ValeurCarte();
+            selectedcard.push(valeurCarte);
+            console.log(selectedcard);
+            reinitialiserSelectionCarte();
+            if (selectedcard.length == players.length){
+                alert('Tout les joueurs ont votés');
+                return;
+            }
+        });
+
+        // Ajoutez le bouton à l'élément du DOM approprié (par exemple, le corps du document)
+        document.body.appendChild(boutonTourSuivant);
+    }
 }
 
-function fInit(){
+/**
+ * Fonction pour passer au joueur suivant
+ */
+function passerAuJoueurSuivant() {
+    // Vérifiez si le tableau des joueurs est défini et n'est pas vide
+    if (players && players.length > 0) {
+        // Affiche le nom du joueur à qui est le tour dans la console (vous pouvez ajuster cela selon vos besoins)
+        console.log("C'est le tour de :", players[currentPlayerIndex]);
+        afficherCurrentPlayer();
+        
+        // Ajoutez ici la logique pour passer au joueur suivant
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+        
+    }
+}
+function afficherCurrentPlayer() {
+    if (players && players.length > 0) {
+        var currentPlayerElement = document.getElementById("currentPlayer");
+        if (currentPlayerElement) {
+            currentPlayerElement.innerText = "C'est le tour de : " + players[currentPlayerIndex];
+        }
+    }
+}
+
+/**
+ * Fonction pour réinitialiser la sélection de carte
+ */
+function reinitialiserSelectionCarte() {
+    // Réinitialisez la carte sélectionnée et la mise en surbrillance
+    if (currentCardId !== "none") {
+        document.getElementById(currentCardId).classList.remove("highlighted");
+        currentCardId = "none";
+    }
+
+    // Masquez le bouton "Tour Suivant" une fois le tour suivant commencé
+    var boutonTourSuivant = document.getElementById("tourSuivantButton");
+    if (boutonTourSuivant) {
+        boutonTourSuivant.remove();
+    }
+}
+
+
+function ValeurCarte(){
+    var valeur = parseInt(currentCardId);
+    return valeur;
+}
+
+function fInit() {
     fInitPLayers();
     fInitCard();
+    console.log(players);
+
+    // Assurez-vous que currentPlayerIndex est initialisé à 0
+    currentPlayerIndex = 0;
+
+    afficherCurrentPlayer();
+
+    // Ajoutez un bouton pour démarrer le processus
+    var demarrerButton = document.createElement("button");
+    demarrerButton.innerText = "Démarrer";
+    demarrerButton.addEventListener("click", function () {
+        // Appel à passerAuJoueurSuivant() pour passer au premier joueur
+        passerAuJoueurSuivant();
+        demarrerButton.remove();
+    });
+
+    // Ajoutez le bouton à l'élément du DOM approprié
+    document.body.appendChild(demarrerButton);
 }
