@@ -1,9 +1,11 @@
 /*Gestion de la logique du planning poker*/
 onload = fInit;
 var currentCardId = "none"; // Carte actuellement sélectionnée par le joueur
-var currentTask = "none" //Tache a voter
-var currentPlayerIndex = 0//Joueur actuel
-var selectedcard = [];
+var currentTaskIndex = 0;   // Tache a voter
+var currentPlayerIndex = 0; // Joueur actuel
+var tasks = [];             // Liste des tâches
+var selectedcard = [];      // Cartes choisises pendant le tour en cours
+var results = [];           // Contient les difficultés trouvées pour chaque tâches
 
 /**
  * Crée un eventListener dans la liste de carte qui modifie le currentCardID
@@ -15,7 +17,6 @@ function fInitCard(){
         document.getElementById(currentCardId).classList.add("highlighted");
         console.log(currentCardId);
         afficherBoutonTourSuivant();
-        
     });
     
 }
@@ -27,7 +28,7 @@ function fInitCard(){
 function fInitPLayers(){
     var theta = [];
     players = localStorage.getItem("pseudos");  // Stringified array
-    players = JSON.parse(players).slice(1);// Parsed array with title removed
+    players = JSON.parse(players).slice(1);     // Parsed array with title removed
 
     var setup = function (n, rx, ry, id) {
         var main = document.getElementById(id);
@@ -67,7 +68,7 @@ function fInitPLayers(){
  */
 function afficherBoutonTourSuivant() {
     // Vérifiez si une carte est sélectionnée
-    if (currentCardId !== "none") {
+    if (currentCardId !== "none" && !(document.getElementById("tourSuivantButton"))) {
         // Créez le bouton "Tour Suivant"
         var boutonTourSuivant = document.createElement("button");
         boutonTourSuivant.innerText = "Tour Suivant";
@@ -116,6 +117,13 @@ function afficherCurrentPlayer() {
 }
 
 /**
+ * Gère le passage aux prochaines tâches
+ * si le vote est ok on passe, sinon on gère la phase de négociation
+ */
+//function passerTacheSuivante() {
+//}
+
+/**
  * Fonction pour réinitialiser la sélection de carte
  */
 function reinitialiserSelectionCarte() {
@@ -141,6 +149,7 @@ function ValeurCarte(){
 function fInit() {
     fInitPLayers();
     fInitCard();
+    tasks = 
     console.log(players);
 
     // Assurez-vous que currentPlayerIndex est initialisé à 0
