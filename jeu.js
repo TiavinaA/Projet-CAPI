@@ -126,6 +126,7 @@ function afficherCurrentPlayer() {
 function passerTacheSuivante() {
     if (tasks && tasks.length > 0) {
         if (currentTaskIndex >= tasks.length){ // On gère la fin du jeu
+            results.push(selectedcard[0]); // On ajoute et on passe le tour
             terminerJeu();
             console.log("Terminer jeu");
         }else{
@@ -198,12 +199,13 @@ function reinitialiserSelectionCarte() {
     }
 }
 
-// TODO
+/**
+ * Démarre le timer pour le débat en fonction des settings
+ * Et l'affiche sur la page en direct
+ */
 function demarrerDebat(){
-    alert("Débat");
     console.log(selectedcard);
     var time = settings["tDebat"];
-    console.log(time)
     var timerDisp = document.getElementById("timer");
     timerDisp.innerHTML = "Temps restant débat : " + time;
     var x = setInterval(() => {
@@ -217,9 +219,12 @@ function demarrerDebat(){
     }, 1000); // Décrémente le timer toute les secondes
 }
 
-//TODO
+/**
+ * Sauvegarde les résultats et renvoie vers la page de fin du jeu
+ */
 function terminerJeu(){
-    alert("jeu terminé");
+    localStorage.setItem("results", JSON.stringify(results));
+    window.location.href = "fin-jeu.html";
 }
 
 function ValeurCarte(){
