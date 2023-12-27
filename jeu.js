@@ -202,6 +202,19 @@ function reinitialiserSelectionCarte() {
 function demarrerDebat(){
     alert("Débat");
     console.log(selectedcard);
+    var time = settings["tDebat"];
+    console.log(time)
+    var timerDisp = document.getElementById("timer");
+    timerDisp.innerHTML = "Temps restant débat : " + time;
+    var x = setInterval(() => {
+        time -= 1;
+        console.log(time);
+        timerDisp.innerHTML = "Temps restant débat : " + time;
+        if(time == 0){
+            clearInterval(x);
+            timerDisp.innerHTML = "";
+        }
+    }, 1000); // Décrémente le timer toute les secondes
 }
 
 //TODO
