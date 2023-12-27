@@ -82,9 +82,10 @@ function afficherBoutonTourSuivant() {
             selectedcard.push(valeurCarte);
             console.log(selectedcard);
             reinitialiserSelectionCarte();
-            if (selectedcard.length == players.length){
+            if (selectedcard.length >= players.length){
                 alert('Tout les joueurs ont votés');
                 passerTacheSuivante();
+                selectedcard = [];
                 return;
             }
         });
@@ -132,11 +133,9 @@ function passerTacheSuivante() {
                 if(settings["mode"] == "Unanimité"){
                     // On passe en mode débat dès que 
                     if(!selectedcard.every(val => val === selectedcard[0])){
-                        reinitialiserSelectionCarte();
                         demarrerDebat();
                     }else{
                         if(selectedcard[0] == 102) { // Tout le monde demande une pause café
-                            reinitialiserSelectionCarte();
                             alert("Vous avez choisis de faire une pause");
                         }else{
                             results.push(selectedcard[0]); // On ajoute et on passe le tour
@@ -159,7 +158,6 @@ function passerTacheSuivante() {
                             winner = key;
                     }
                     if(winner == -1){ // Si il n'y a pas de majorité
-                        reinitialiserSelectionCarte();
                         demarrerDebat();
                     }else{
                         results.push(winner);
@@ -200,8 +198,15 @@ function reinitialiserSelectionCarte() {
     }
 }
 
+// TODO
 function demarrerDebat(){
     alert("Débat");
+    console.log(selectedcard);
+}
+
+//TODO
+function terminerJeu(){
+    alert("jeu terminé");
 }
 
 function ValeurCarte(){
