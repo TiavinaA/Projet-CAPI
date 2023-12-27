@@ -1,6 +1,5 @@
 
 onload = fInit;
-
 function initForm() {
     const form = document.getElementById("EntryForm1")
     form.addEventListener("submit", (event) => {
@@ -90,8 +89,12 @@ function displayTasksFromJson(tasks) {
         taskContainer.appendChild(taskElement);
     });
 }
-
+/**
+ * Initialise le formulaire
+ */
 function fInit() {
     initForm();
 }
-
+ module.exports = {
+    initForm, displayTasksFromJson, loadJson, finishEntryList, supprTask, fInit
+ };

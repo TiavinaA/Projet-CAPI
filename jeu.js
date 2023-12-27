@@ -4,6 +4,23 @@ var currentCardId = "none"; // Carte actuellement sélectionnée par le joueur
 var currentTask = "none" //Tache a voter
 var currentPlayerIndex = 0//Joueur actuel
 var selectedcard = [];
+var currentTaskIndex = 0;
+var taskArray = [];
+
+function fInitTasks() {
+    tasks = localStorage.getItem("tasks");
+    tasks = JSON.parse(tasks);
+    taskArray = Array.isArray(tasks) ? tasks : [tasks];
+    console.log(taskArray);
+}
+
+// function voteTasks(){
+//     taskArray.forEach(function(element){
+//         console.log(element);
+//         afficherBoutonTourSuivant();
+//         passerAuJoueurSuivant();
+//     });
+// }
 
 /**
  * Crée un eventListener dans la liste de carte qui modifie le currentCardID
@@ -76,8 +93,8 @@ function afficherBoutonTourSuivant() {
         // Ajoutez un gestionnaire d'événements pour le clic sur le bouton
         boutonTourSuivant.addEventListener("click", function () {
             passerAuJoueurSuivant();
-            var valeurCarte = ValeurCarte();
-            selectedcard.push(valeurCarte);
+            var valeur = valeurCarte();
+            selectedcard.push(valeur);
             console.log(selectedcard);
             reinitialiserSelectionCarte();
             if (selectedcard.length == players.length){
@@ -100,8 +117,6 @@ function passerAuJoueurSuivant() {
         // Affiche le nom du joueur à qui est le tour dans la console (vous pouvez ajuster cela selon vos besoins)
         console.log("C'est le tour de :", players[currentPlayerIndex]);
         afficherCurrentPlayer();
-        
-        // Ajoutez ici la logique pour passer au joueur suivant
         currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
         
     }
@@ -133,12 +148,12 @@ function reinitialiserSelectionCarte() {
 }
 
 
-function ValeurCarte(){
+function valeurCarte(){
     var valeur = parseInt(currentCardId);
     return valeur;
 }
-
 function fInit() {
+    fInitTasks();
     fInitPLayers();
     fInitCard();
     console.log(players);
@@ -159,4 +174,5 @@ function fInit() {
 
     // Ajoutez le bouton à l'élément du DOM approprié
     document.body.appendChild(demarrerButton);
+    // voteTasks();
 }
