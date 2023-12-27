@@ -1,6 +1,11 @@
 /*Gestion de la sauvegarde des paramètre en local*/
+/**
+ * Lance la fonction d'intialisation au chargement de la page
+ */
 onload = fInit;
-
+/**
+ * Affiche le formulaire des paramètres
+ */
 function InitForm() {
     const form = document.getElementById("setupForm")
     form.addEventListener("submit", (event) => {

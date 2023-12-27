@@ -1,15 +1,17 @@
 
 var maxPlayers = 10;
-var playerCount = 0;
+var playerCount = 0;//Compteur de joueurs
 function ajouterPseudo() {
+    //Vérifie que le nombre max n'est pas atteint
     if (playerCount >= maxPlayers) {
         alert("Vous avez atteint le nombre maximal de joueurs");
         return;
     }
-
+    //AJoute le pseudo dans la liste
     var pseudoInput = document.getElementById("pseudo");
     var pseudo = pseudoInput.value;
 
+    //Affichage du pseudo
     if (pseudo.trim() !== "") {
         // Ligne d'affichage du pseudo
         var ligneJoueur = document.createElement("div");
@@ -49,6 +51,7 @@ function supprimerPseudo(playerEntry) {
     // Supprime l'entrée du joueur de la liste
     var pseudosList = document.getElementById("pseudos-list");
     pseudosList.removeChild(playerEntry);
+    //Réduit le nombre de joueurs
     playerCount--;
     afficherBouton();
 }

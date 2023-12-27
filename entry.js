@@ -29,7 +29,10 @@ function initForm() {
     document.getElementById("EntryValidation").addEventListener("click", finishEntryList);
     document.getElementById("loadJsonButton").addEventListener("click", loadJson);
 }
-
+/**
+ * Supprime la tache
+ * @param {} event Evenement clique sur le bouton 
+ */
 function supprTask(event) {
     this.parentNode.parentNode.removeChild(this.parentNode);
 }
@@ -48,7 +51,9 @@ function finishEntryList(){
     //Redirige vers la page de jeu
     window.location.href = "jeu.html"
 }
-
+/**
+ * Chargement d'un fichier JSON contenant une liste de backlogs
+ */
 function loadJson() {
     const fileInput = document.getElementById("fileInput");
 
@@ -70,7 +75,10 @@ function loadJson() {
         console.error('Aucun fichier sélectionné');
     }
 }
-
+/**
+ * Affiche la liste chargé depuis le fichier JSON de la meme facon que si on les avait tapé
+ * @param {*} tasks Array Contenant les backlogs
+ */
 function displayTasksFromJson(tasks) {
     const taskContainer = document.getElementById("entryList");
     taskContainer.innerHTML = "";

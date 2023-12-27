@@ -68,14 +68,14 @@ function fInitPLayers(){
  * Cette fonction permet d'afficher le bouton "Tour Suivant" lorsque la carte est sélectionnée.
  */
 function afficherBoutonTourSuivant() {
-    // Vérifiez si une carte est sélectionnée
+    // Vérifie si une carte est sélectionnée
     if (currentCardId !== "none" && !(document.getElementById("tourSuivantButton"))) {
-        // Créez le bouton "Tour Suivant"
+        // Crée le bouton "Tour Suivant"
         var boutonTourSuivant = document.createElement("button");
         boutonTourSuivant.innerText = "Tour Suivant";
         boutonTourSuivant.id = "tourSuivantButton";
 
-        // Ajoutez un gestionnaire d'événements pour le clic sur le bouton
+        // Ajoute un gestionnaire d'événements pour le clic sur le bouton
         boutonTourSuivant.addEventListener("click", function () {
             passerAuJoueurSuivant();
             var valeurCarte = ValeurCarte();
@@ -89,7 +89,7 @@ function afficherBoutonTourSuivant() {
             }
         });
 
-        // Ajoutez le bouton à l'élément du DOM approprié (par exemple, le corps du document)
+        // Ajoute le bouton suivant à la page
         document.body.appendChild(boutonTourSuivant);
     }
 }
@@ -98,17 +98,20 @@ function afficherBoutonTourSuivant() {
  * Fonction pour passer au joueur suivant
  */
 function passerAuJoueurSuivant() {
-    // Vérifiez si le tableau des joueurs est défini et n'est pas vide
+    // Vérifie si le tableau des joueurs est défini et n'est pas vide
     if (players && players.length > 0) {
-        // Affiche le nom du joueur à qui est le tour dans la console (vous pouvez ajuster cela selon vos besoins)
+        // Affiche le nom du joueur à qui est le tour dans la console
         console.log("C'est le tour de :", players[currentPlayerIndex]);
         afficherCurrentPlayer();
         
-        // Ajoutez ici la logique pour passer au joueur suivant
+        //Passe au joueur suivant
         currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
         
     }
 }
+/**
+ * Affiche le joueur en jeu
+ */
 function afficherCurrentPlayer() {
     if (players && players.length > 0) {
         var currentPlayerElement = document.getElementById("currentPlayer");
@@ -140,7 +143,7 @@ function passerTacheSuivante() {
                             alert("Vous avez choisis de faire une pause");
                         }else{
                             results.push(selectedcard[0]); // On ajoute et on passe le tour
-                            // On change la task en cours;
+                            // On change la task en cours
                             var currentTaskElement = document.getElementById("currentTask");
                             if (currentTaskElement){
                                 currentTaskElement.innerHTML = tasks[currentTaskIndex];
@@ -187,13 +190,13 @@ function passerTacheSuivante() {
  * Fonction pour réinitialiser la sélection de carte
  */
 function reinitialiserSelectionCarte() {
-    // Réinitialisez la carte sélectionnée et la mise en surbrillance
+    // Réinitialise la carte sélectionnée et la mise en surbrillance
     if (currentCardId !== "none") {
         document.getElementById(currentCardId).classList.remove("highlighted");
         currentCardId = "none";
     }
 
-    // Masquez le bouton "Tour Suivant" une fois le tour suivant commencé
+    // Masque le bouton "Tour Suivant" une fois le tour suivant commencé
     var boutonTourSuivant = document.getElementById("tourSuivantButton");
     if (boutonTourSuivant) {
         boutonTourSuivant.remove();
@@ -203,13 +206,18 @@ function reinitialiserSelectionCarte() {
 function demarrerDebat(){
     alert("Débat");
 }
-
+/**
+ * Retourne une valeur selon la carte choisie
+ * @returns Retourne la valeur de la carte
+ */
 function ValeurCarte(){
     if(currentCardId == "cint") return 101;
     if(currentCardId == "ccafe") return 102;
     return parseInt(currentCardId);;
 }
-
+/**
+ * Cette fonction se lance quand la page est chargée
+ */
 function fInit() {
     fInitPLayers();
     fInitCard();
@@ -222,7 +230,7 @@ function fInit() {
 
     afficherCurrentPlayer();
 
-    // Ajoutez un bouton pour démarrer le processus
+    // Ajoute un bouton pour démarrer le processus
     var demarrerButton = document.createElement("button");
     demarrerButton.innerText = "Démarrer";
     demarrerButton.addEventListener("click", function () {
@@ -232,6 +240,6 @@ function fInit() {
         demarrerButton.remove();
     });
 
-    // Ajoutez le bouton à l'élément du DOM approprié
+    // Ajoute le bouton pour démarrer le jeu
     document.body.appendChild(demarrerButton);
 }
